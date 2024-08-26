@@ -10,18 +10,23 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Data
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
-public class Money {
+public class MoneyDTO {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private BigDecimal deposit;
     private BigDecimal withdraw;
+    private String category;
+    private String memo;
+    private LocalDateTime time;
 
-    private Date date;
+    public MoneyDTO() {
+        this.time = LocalDateTime.now();
+    }
 }
